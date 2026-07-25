@@ -1,4 +1,4 @@
-name:roboshop 
+name: roboshop 
 services:
   mongodb:
     build: ./mongodb
@@ -9,19 +9,19 @@ services:
     image: joindevops/catalogue:v1
     container_name: catalogue
     depends_on:
-    -mongodb
+    - mongodb
   frontend:
     build: ./frontend
     image: joindevops/frontend:v1
     container_name: frontend
     ports:
-    ="80:80"
+    - "80:80"
     depends_on:
-    -catalogue
+    - catalogue
   
 networks:
   default: 
-  name:roboshop
-  driver:bridge
-  external:false 
+  name: roboshop
+  driver: bridge
+  external: false 
 
