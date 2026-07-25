@@ -21,7 +21,7 @@ services:
   
 networks:
   default: 
-  name: roboshop
-  driver: bridge
-  external: false 
+    name: roboshop
+    driver: bridge
+    external: false
 
