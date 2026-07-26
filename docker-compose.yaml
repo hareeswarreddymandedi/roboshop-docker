@@ -52,7 +52,7 @@ services:
     image: redis:7
     container_name: redis # docker run -d --name redis --network roboshop redis:7
     volumes:
-    - radis: /data
+    - redis:/data
 
   rabbitmq:
     image: rabbitmq:3
