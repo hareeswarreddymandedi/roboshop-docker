@@ -52,6 +52,7 @@ services:
     image: ec2-user
     build: ./mysql
     container_name: mysql
+    command: --mysql-native-password=ON
     environment:
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
 
