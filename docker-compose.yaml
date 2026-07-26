@@ -5,7 +5,7 @@ services:
     image: ec2-user/mongodb:v1   
     container_name: mongodb 
     volumes:
-    - mongodb: /data/db # mongodb stores data in this directory       
+    - mongodb:/data/db # mongodb stores data in this directory       
   catalogue:
     build: ./catalogue
     image: ec2-user/catalogue:v1
@@ -61,7 +61,7 @@ services:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
     volumes:
-    - rabbitmq: /var/lib/rabbitmq
+    - rabbitmq:/var/lib/rabbitmq
   mysql:
     image: ec2-user/mysql:v1
     build: ./mysql
@@ -71,7 +71,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
     volumes:
-    - mysql: /var/lib/mysql
+    - mysql:/var/lib/mysql
 
   shipping:
     build: ./shipping
@@ -106,7 +106,7 @@ networks:
     driver: bridge
     external: false
 
-volums:
+volumes:
   mongodb:
   redis:
   mysql:
