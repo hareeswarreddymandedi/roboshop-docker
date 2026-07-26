@@ -34,10 +34,10 @@ services:
     image: redis:7
     container_name: redis # docker run -d --name redis --network roboshop redis:7
 
-    user:
-    build: ./user
-    image: ec2-user/user:v1
-    container_name: user
+    cart:
+    build: ./cart
+    image: ec2-user/cart:v1
+    container_name: cart
     environment:
       REDIS_HOST: redis
       CATALOGUE_HOST: catalogue
@@ -45,10 +45,7 @@ services:
     depends_on:
     - redis
     - catalogue
-  redis:
-    image: redis:7
-    container_name: redis # docker run -d --name redis --network roboshop redis:7
-
+  
 networks:
   default: 
     name: roboshop
