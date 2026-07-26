@@ -60,7 +60,8 @@ services:
     image: ec2-user/mysql:v1
     build: ./mysql
     container_name: mysql
-    command: --mysql-native-password=ON --innodb-lock_wait_timeout=120
+    # command: --mysql-native-password=ON --innodb-lock_wait_timeout=120
+    command: --innodb-lock_wait_timeout=120
     environment:
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
 
