@@ -20,6 +20,8 @@ services:
     - catalogue
     - user
     - cart
+    - shipping
+    - payment
   user:
     build: ./user
     image: ec2-user/user:v1
@@ -72,6 +74,23 @@ services:
       DB_HOST: mysql
     depends_on:
     - mysql
+    - cart  
+
+  payment:
+    build: ./payment
+    image: ec2-user/payment:v1
+    container_name: payment
+    environment:
+      CART_HOST: "cart"
+      CART_PORT: 8080
+      USER_HOST: user
+      USER_PORT: 8080
+      AMQP_HOST: rabbitmq
+      AMQP_PORT: roboshop
+      AMQP_PASS: roboshop123
+    depends_on:
+    - user
+    - rabbitmq
     - cart  
 networks:
   default: 
