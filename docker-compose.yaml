@@ -3,7 +3,9 @@ services:
   mongodb:
     build: ./mongodb
     image: ec2-user/mongodb:v1   
-    container_name: mongodb        
+    container_name: mongodb 
+    volumes:
+    - mongodb: /data/db # mongodb stores data in this directory       
   catalogue:
     build: ./catalogue
     image: ec2-user/catalogue:v1
@@ -49,6 +51,8 @@ services:
   redis:
     image: redis:7
     container_name: redis # docker run -d --name redis --network roboshop redis:7
+    volumes:
+    - radis: /data
 
   rabbitmq:
     image: rabbitmq:3
@@ -56,6 +60,8 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
+    volumes:
+    - rabbitmq: /var/lib/rabbitmq
   mysql:
     image: ec2-user/mysql:v1
     build: ./mysql
@@ -64,6 +70,8 @@ services:
     command: --innodb-lock_wait_timeout=120
     environment:
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
+    volumes:
+    - mysql: /var/lib/mysql
 
   shipping:
     build: ./shipping
@@ -97,4 +105,11 @@ networks:
     name: roboshop
     driver: bridge
     external: false
+
+volums:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq:
+
 
