@@ -48,6 +48,14 @@ services:
     image: redis:7
     container_name: redis # docker run -d --name redis --network roboshop redis:7
 
+  mysql:
+    image: ec2-user
+    build: ./mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "RoboShop@1"
+
+
 networks:
   default: 
     name: roboshop
