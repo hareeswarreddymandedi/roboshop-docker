@@ -69,7 +69,6 @@ services:
     image: ec2-user/shipping:v1
     container_name: shipping
     environment:
-      REDIS_HOST: redis
       CART_ENDPOINT: "cart:8080"
       DB_HOST: mysql
     depends_on:
